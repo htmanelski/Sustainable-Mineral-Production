@@ -21,46 +21,5 @@ df['Cumulative N(x)'] = np.cumsum(df['N(x)'])
 df['A(x)'] = df['N(x)']*4*np.pi*(df['x']/20000)**2
 df['Cumulative A(x)'] = np.cumsum(df['A(x)'])
 
-'''
-plt.title('4.2')
-plt.plot(df['x'],df['F(x)'])
-plt.xlabel('x (microns)')
-plt.ylabel('F(x)')
-plt.xscale('log')
-plt.show()
-
-plt.title('4.3')
-plt.plot(df['x'],df['F(x)'],label='F(x)')
-plt.axhline(y=0.5, linestyle='dashed',label='P50',c='red')
-plt.axhline(y=0.8, linestyle='dashed',label='P80',c='green')
-plt.plot(df['x'],np.cumsum(df['F(x)']),label='Cumulative')
-plt.xlabel('x (microns)')
-plt.ylabel('Fraction Passing')
-plt.legend()
-plt.xscale('log')
-plt.show()
-'''
-
-'''
-P50 = np.cumsum(df['F(x)']).describe()[5]
-n = np.abs(np.cumsum(df['F(x)']) - P50)
-n_min = n.min()
-
-indx = n.loc[n==n_min].index[0]
-#df['x'].loc[df.index==indx]
-'''
-
 P50 = float(df.iloc[(np.cumsum(df['F(x)'])-0.5).abs().argsort()[:1]]['x'])
 P80 = float(df.iloc[(np.cumsum(df['F(x)'])-0.8).abs().argsort()[:1]]['x'])
-
-    
-
-
-
-
-
-
-
-
-
-#df.to_csv('')
