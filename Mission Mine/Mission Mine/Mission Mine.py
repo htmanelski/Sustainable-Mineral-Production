@@ -59,6 +59,7 @@ def update():
     Ratio1 = float(OF1_var.get())
     Ratio2=float(OF2_var.get())
     
+    
     #SAG Mill Output
     SAG_out= Feed/2 + (1-Ratio1)*Feed/Ratio1/2
     
@@ -67,6 +68,9 @@ def update():
     Ball_out= Feed + (1-Ratio2)*Feed/Ratio2
     
     Circulating2 = (1-Ratio2)*Feed/Ratio2
+    
+    percent1 = ((Feed+Circulating)/Feed-1)*100
+    percent2 = ((Feed+Circulating2)/Feed-1)*100
     
     Dis1_label.place_forget()
     Dis2_label.place_forget()
@@ -82,15 +86,15 @@ def update():
     OF1_label = Label(foreground, text= "Overflow: " + str(Feed) + " t/hr")
     OF2_label = Label(foreground, text= "Overflow: " + str(Feed) + " t/hr")
     
-    Cir1_label = Label(foreground, text= "Circulating load: " + str(Circulating)[0:4] + " t/hr")
-    Cir2_label = Label(foreground, text="Circulating load: " + str(Circulating2)[0:4] + " t/hr")
+    Cir1_label = Label(foreground, text= "Circulating Load %: " + str(percent1)[0:5]+ "%   " + str(Circulating)[0:4] + " t/hr"   )
+    Cir2_label = Label(foreground, text="Circulating Load %: " +  str(percent2)[0:5]+ "%   " + str(Circulating2)[0:4] + " t/hr")
     
     Dis1_label.place(x=280, y=580)
     Dis2_label.place(x=280, y=775)
     Dis3_label.place(x=700, y=440)
     OF1_label.place(x=560, y=480)
     OF2_label.place(x=880, y=430)
-    Cir1_label.place(x=120 , y=790)
+    Cir1_label.place(x=120 , y=805)
     Cir2_label.place(x=680 , y=600)
     pass
 
